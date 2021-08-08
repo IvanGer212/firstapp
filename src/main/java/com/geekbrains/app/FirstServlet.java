@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 public class FirstServlet extends HttpServlet {
     private static Logger logger = LoggerFactory.getLogger(FirstServlet.class);
@@ -20,9 +21,10 @@ public class FirstServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Log: GET");
         ArrayList<Product> products = new ArrayList<>();
+        Random random = new Random();
         resp.getWriter().printf("<html><body>");
         for (int i = 1; i <=10 ; i++) {
-            products.add(new Product(i,"Product "+i, i*1000));
+            products.add(new Product(i,"Product "+i, random.nextDouble()*i*1000));
         }
         for (int i = 0; i <10 ; i++) {
             resp.getWriter().printf("<h1>"+products.get(i).toString()+"</h1>");
