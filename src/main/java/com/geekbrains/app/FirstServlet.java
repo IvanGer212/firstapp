@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -25,7 +27,7 @@ public class FirstServlet extends HttpServlet {
         final Random random = new Random();
         Stream<Product> stream = products.stream();
         for (int i = 1; i <=10 ; i++) {
-            products.add(new Product(i,"Product "+i, random.nextDouble()*i*1000));
+            products.add(new Product(i,"Product "+i, round(random.nextDouble()*i*1000)));
         }
         resp.getWriter().printf("<html><body>");
         stream.forEach(p-> {
@@ -36,5 +38,11 @@ public class FirstServlet extends HttpServlet {
             }
         });
         resp.getWriter().printf("</body></html>");
+    }
+
+    private static double round (double value){
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
