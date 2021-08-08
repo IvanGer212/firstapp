@@ -1,5 +1,8 @@
 package product;
 
+import lombok.ToString;
+
+@ToString
 public class Product {
     private final int id;
     private final String title;
