@@ -1,4 +1,4 @@
-package product;
+package com.geekbrains.app.context.domain;
 
 import lombok.ToString;
 

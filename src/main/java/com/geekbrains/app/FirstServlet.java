@@ -2,7 +2,7 @@ package com.geekbrains.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import product.Product;
+import com.geekbrains.app.context.domain.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.stream.Stream;
 
